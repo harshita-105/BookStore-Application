@@ -11,27 +11,30 @@ const adminRoutes= require('./src/stats/admin.stats')
 const app=express()
 const port=process.env.PORT || 5000;
 
-main().then(()=>console.log("ok")).catch(err => console.log(err));
-
-app.use(cors());
-app.use(express.json());
-/*app.use(cors({
-  origin: "http://localhost:5173",
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGIN || "http://localhost:5173",
   credentials: true,
-})); */
+}));
+app.use(express.json());
 
 app.use("/api/books", bookRoutes)
 app.use("/api/orders", orderRoutes)
 app.use("/api/auth", userRoutes)
 app.use("/api/admin", adminRoutes)
 
+app.get('/', (req,res)=>{
+  res.send("BookStore API is running")
+})
+
 async function main() {
   await mongoose.connect(process.env.DB_URL);
-  app.use(`/`, (req,res)=>{
-   res.send("Hello")
+  console.log("MongoDB connected");
+  app.listen(port, ()=>{
+    console.log(`Server running on port ${port}`)
   })
 }
 
-app.listen(port, ()=>{
-  console.log(`port is ${port}`)
-})
+main().catch(err => {
+  console.error("Failed to connect to MongoDB:", err);
+  process.exit(1);
+});
