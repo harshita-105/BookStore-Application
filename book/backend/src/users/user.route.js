@@ -1,4 +1,5 @@
 const express= require('express');
+const bcrypt= require('bcrypt');
 const User = require('./user.model');
 const jwt = require('jsonwebtoken');
 const router= express.Router();
@@ -10,10 +11,12 @@ router.post("/admin", async(req,res)=>{
 
     const admin= await User.findOne({username});
     if(!admin){
-      res.status(404).send({message:"Admin not found!"})
+      return res.status(404).send({message:"Admin not found!"})
     }
-    if(admin.password!==password){
-      res.status(401).send({message:"Wrong password."})
+
+    const isMatch = await bcrypt.compare(password, admin.password);
+    if(!isMatch){
+      return res.status(401).send({message:"Wrong password."})
     }
 
     const token= jwt.sign({id:admin._id, username:admin.username, role:admin.role}, JWT_SECRET, {expiresIn:"3h"})
@@ -29,7 +32,7 @@ router.post("/admin", async(req,res)=>{
 
   } catch (error) {
     console.error("Login failed",error)
-    res.status(401).send({message:"Invalid credentials."})
+    res.status(500).send({message:"Login failed."})
   }
 })
 
