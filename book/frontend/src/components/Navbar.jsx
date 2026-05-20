@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {href, Link} from 'react-router-dom'; 
+import {Link} from 'react-router-dom'; 
 import '../index.css'
 import { HiBars3 } from "react-icons/hi2";
 import { FaSearch } from "react-icons/fa";
@@ -20,7 +20,7 @@ const navigation= [
 
 const Navbar = () => {
 
-  const {curUser, logout}= useAuth()
+  const {currentUser, logout}= useAuth()
   const handleLogout= ()=>{
     logout()
   }
@@ -48,11 +48,11 @@ const Navbar = () => {
 
         <div className>    {/*user pic*/}
           {
-            curUser?
+            currentUser?
             <>
               <button onClick={()=> setDropDownOpen(!dropDownOpen)}>
                 <img alt='user img' src={avatar} className={`size-7 rounded-full 
-                  ${curUser? 'ring-2 ring-black':'' }`}/>
+                  ${currentUser? 'ring-2 ring-black':'' }`}/>
               </button>
               {/*dropdown*/}
  

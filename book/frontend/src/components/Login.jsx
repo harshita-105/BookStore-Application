@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'; 
+import {Link, useNavigate} from 'react-router-dom'; 
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useAuth } from '../context/AuthContext';
@@ -8,6 +8,7 @@ const Login = () => {
 
   const [message,setMessage]=useState("");
   const {loginUser, signInWithGoogle}=useAuth()
+  const navigate = useNavigate()
 
   const {
     register,
@@ -86,7 +87,7 @@ const Login = () => {
           </button>
         </div>
 
-        <p className='mt-5 text-center ltext-gray-500 text-xs'>02026 Book Store. All rights reserved</p>
+        <p className='mt-5 text-center text-gray-500 text-xs'>©2026 Book Store. All rights reserved</p>
 
       </div>
     </div>

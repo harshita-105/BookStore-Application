@@ -32,7 +32,7 @@ const AdminLogin = () => {
             localStorage.removeItem('token')
             alert('Token has expired. Please login again.');
             navigate("/")
-          }, 3600*3000)
+          }, 3 * 60 * 60 * 1000)
         }
         alert("Admin login successful")
         navigate("/dashboard")
@@ -81,7 +81,7 @@ const AdminLogin = () => {
 
         </form>
 
-        <p className='mt-5 text-center ltext-gray-500 text-xs'>02026 Book Store. All rights reserved</p>
+        <p className='mt-5 text-center text-gray-500 text-xs'>©2026 Book Store. All rights reserved</p>
 
       </div>
     </div>
