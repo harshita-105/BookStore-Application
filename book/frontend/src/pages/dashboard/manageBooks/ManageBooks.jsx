@@ -23,7 +23,7 @@ const ManageBooks = () => {
 
     // Handle navigating to Edit Book page
     const handleEditClick = (id) => {
-        navigate(`dashboard/edit-book/${id}`);
+        navigate(`/dashboard/edit-book/${id}`);
     };
   return (
     <section className="py-1 bg-blueGray-50">
