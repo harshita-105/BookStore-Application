@@ -3,6 +3,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { getImgUrl } from '../../utils/getImgUrl';
 import { Link } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
+import { addToCart } from '../../redux/features/cart/cartSlice';
 
 const BookCard = ({book}) => {
   const dispatch= useDispatch();
@@ -50,11 +51,3 @@ const BookCard = ({book}) => {
 
 export default BookCard;
 
-
-import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-// import Swiper and modules styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { addToCart } from '../../redux/features/cart/cartSlice';

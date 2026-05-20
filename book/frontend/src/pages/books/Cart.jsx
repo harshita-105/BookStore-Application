@@ -1,5 +1,4 @@
 import React from 'react'
-import { get } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getImgUrl } from '../../utils/getImgUrl';
