@@ -3,7 +3,7 @@ import banner from '../../assets/banner.png'
 
 const Banner = () => {
   return (
-    <div className='flex flex-col md:flex-row py-16 justify-between items-center gap-12 px-10 md:flex-row-reverse'>
+    <div className='flex flex-col md:flex-row py-16 justify-between items-center gap-12 px-10'>
 
       {/*img*/} 
       <div className='md:w-1/2 w-full flex items-center md:justify-end'>
